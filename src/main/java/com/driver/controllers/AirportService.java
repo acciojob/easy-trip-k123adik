@@ -4,6 +4,7 @@ import com.driver.model.Airport;
 import com.driver.model.City;
 import com.driver.model.Flight;
 import com.driver.model.Passenger;
+import io.swagger.models.auth.In;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.Date;
 public class AirportService {
 
     AirportRepository airportRepository = new AirportRepository();
+
 
     public void addAirport(Airport airport){
         airportRepository.addAirport(airport);
@@ -29,14 +31,14 @@ public class AirportService {
         return airportRepository.getLargestAirportName();
     }
 
-    public double getShortestDurationOfPossibleBetweenTwoCities(City fromcity, City toCity){
-        double shortestDuration = airportRepository.getShortestDurationOfPossibleBetweenTwoCities(fromcity, toCity);
-        return shortestDuration;
+    public double getShortestDurationOfPossibleBetweenTwoCities(City fromCity, City toCity){
+        double shortestDuration = airportRepository.getShortestDurationOfPossibleBetweenTwoCities(fromCity, toCity);
+        return  shortestDuration;
     }
 
     public int getNumberOfPeopleOn(Date date, String airportName){
-        int people = airportRepository.getNumberOfPeopleOn(date, airportName);
-        return people;
+        int noOfPeople = airportRepository.getNumberOfPeopleOn(date, airportName);
+        return noOfPeople;
     }
 
     public String bookATicket(Integer flightId, Integer passengerId){
@@ -55,7 +57,7 @@ public class AirportService {
     }
 
     public int calculateFlightFare(int flightId){
-        int ans = airportRepository.calculateFlightfare(flightId);
+        int ans = airportRepository.calculateFlightFare(flightId);
         return ans;
     }
 
@@ -67,4 +69,6 @@ public class AirportService {
     public String getAirportNameFromFlightId(int flightId){
         return airportRepository.getAirportNameFromFlightId(flightId);
     }
+
+
 }
